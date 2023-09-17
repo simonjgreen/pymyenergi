@@ -204,7 +204,7 @@ def cli():
         LIBBI, help="use libbi --help for available commands"
     )
     subparser_libbi.add_argument("-s", "--serial", dest="serial", default=None)
-    subparser_libbi.add_argument("action", choices=["show","mode","priority"])
+    subparser_libbi.add_argument("action", choices=["show","mode","priority","energy"])
     subparser_libbi.add_argument("arg", nargs="*")
 
     args = parser.parse_args()

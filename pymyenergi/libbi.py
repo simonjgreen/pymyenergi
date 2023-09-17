@@ -33,8 +33,6 @@ class Libbi(BaseDevice):
     def kind(self):
         return LIBBI
     
-
-        
     @property
     def status(self):
         """Get current known status"""
@@ -71,12 +69,12 @@ class Libbi(BaseDevice):
     
     @property
     def ct5(self):
-        """Current transformer 4"""
+        """Current transformer 5"""
         return self._create_ct(5)
     
     @property
     def ct6(self):
-        """Current transformer 4"""
+        """Current transformer 6"""
         return self._create_ct(6)
     
     @property
@@ -134,12 +132,19 @@ class Libbi(BaseDevice):
         """Inverter size in kwh"""
         return self._data.get("mic", 0) /1000
     
-
-
+    @property
+    def battery_charged(self):
+        """Battery charged in kwh"""
+        return self._data.get("bcp", 0) /1000
+    
+    @property
+    def battery_discharged(self):
+        """Battery discharged in kwh"""
+        return self._data.get("bdp", 0) /1000
+    
     @property
     def prefix(self):
         return "L"
-    
 
     async def set_operating_mode(self, mode: str):
         """Stopped or normal mode"""
@@ -188,6 +193,4 @@ class Libbi(BaseDevice):
         ret = ret + f"CT 6 {self.ct6.name} {self.ct6.power}W phase {self.ct6.phase}\n"
         for key in self.ct_keys:
             ret = ret + f"Energy {key} {self.history_data.get(key, 0)}Wh\n"
-       
-
         return ret

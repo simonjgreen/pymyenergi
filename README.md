@@ -146,10 +146,16 @@ loop.run_until_complete(get_data())
 ```
 
 ## libbi support
-  very early
-  reads a few values like State of Charge
-  gets the current status
-
+  Very early.
+  Reads:
+  - SoC
+  - kWh charged
+  - kWh discharged
+  - PV energy
+  - CTs
+  - State
+  - Inverter capability
+  - Battery capacity
 
 ## Credits
 
